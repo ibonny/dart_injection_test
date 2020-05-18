@@ -14,12 +14,29 @@ class MySecondClass {
   String testout() => "This is also a test.";
 }
 
+@Config
+class BeanClass {
+  @Bean
+  MyFirstClass getMyFirstClass() {
+    return MyFirstClass();
+  }
+}
+
+@Autowired
+MyFirstClass mfc;
 
 void main(List<String> args) {
+  InjectionHandler.performScan();
+
+  print("Here: $mfc");
+
   InjectionHandler.registerFunc('first', () => MyFirstClass());
 
   InjectionHandler.registerType('second', MySecondClass);
 
+  // This is equivalent to:
+  // @Autowired
+  // MyFirstClass f;
   var f = InjectionHandler.instantiate('first');
 
   var g = InjectionHandler.instantiate('second');

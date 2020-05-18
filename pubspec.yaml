@@ -1,0 +1,5 @@
+name: dart_injection_test
+
+dependencies:
+  wired2: ^0.1.0
+  mirrorme2: ^0.1.0
